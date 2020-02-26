@@ -9,11 +9,16 @@
 <div th:each="employee : ${employees}">
     <h2 th:text="${employee.name}"></h2>
     <h6 th:inline="text">identified by [[${employee.ssn}]]</h6>
-    <ul>
-        <th:block th:each="movie : ${employee.laptop}">
-            <li th:inline="text">Has been assigned a<b>[[${brand}]]</b> [[${model}]].</li>
-        </th:block>
-    </ul>
+<ul>
+    <th:block th:each="movie : ${employee.laptop}">
+    <li th:inline="text">Has been assigned a<b>[[${brand}]]</b> [[${model}]].</li>
+    </th:block>
+</ul>
 </div>
+<select> <!-- add th:field="*{variable}" -->
+    <div id="actor" th:each="employee : ${employees}">
+        <option th:value="${employee.getId()}" th:text="${employee.name}"></option>
+    </div>
+</select>
 </body>
 </html>
